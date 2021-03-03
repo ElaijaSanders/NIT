@@ -23,13 +23,12 @@ public class Window extends Wrapper<JFrame> {
             try { this.value.setIconImage( new ImageIcon(Wrapper.class.getResource("DefaultIcon.png")).getImage() ); }
             catch(Exception e){ System.err.println("[Error] Default icon didn't load."); }
         } this.value.setTitle(title);
-        this.value.setVisible(true);
+        //this.value.setVisible(true);
     } public Window(int w, int h, String title){
         this(w, h, title, null);
     }public Window(int w, int h){
         this(w, h, "", null);
     }
-    public void add(Technical.Component c){
-    	value.add(c.getRawValue());
-    }
+    public void show(){ this.value.setVisible(true); }
+    public void add(Technical.Component c){ value.add(c.getRawValue()); /*c.getRawValue().repaint();*/ }
 }

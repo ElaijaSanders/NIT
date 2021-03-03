@@ -32,7 +32,5 @@ public class NITButtonUI extends BasicButtonUI { //TODO own style, yeah?
 		if(((AbstractButton)c).getModel().isPressed()) d.translate(1, 1);
 		super.paint(g, c);
 	}
-	public static ComponentUI createUI ( JComponent c ) {
-	    return new NITButtonUI();
-	}
+	public static ComponentUI createUI ( JComponent c ) { return new NITButtonUI(); }
 }
