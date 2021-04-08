@@ -23,5 +23,6 @@ public class NITLaF extends BasicLookAndFeel {
     protected void initClassDefaults(UIDefaults table){
         super.initClassDefaults(table);
         table.put("ButtonUI", NITButtonUI.class.getCanonicalName());
+        table.put("LabelUI", NITLabelUI.class.getCanonicalName());
     }
 }
