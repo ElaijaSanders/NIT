@@ -1,5 +1,7 @@
 package Testing;
 
+import java.awt.Dimension;
+
 import javax.swing.*;
 import UI.NITLaF;
 
@@ -25,6 +27,11 @@ public class Main {
     	JButton button5 = new JButton("Disabled");
     	button5.getModel().setEnabled(false);
     	addAll(tab1row1, button1, button2, button3, button4, button5);
+    	JPanel tab1row2 = new JPanel(); tab1.add(tab1row2);
+    	JTextField textField1 = new JTextField("");
+    	textField1.setPreferredSize(new Dimension(200, 40));
+    	textField1.putClientProperty("placeholder", "Placeholder");
+    	addAll(tab1row2, textField1);
     	tabs.addTab("Basic", tab1);
     	w.add(tabs);
     	w.setVisible(true);

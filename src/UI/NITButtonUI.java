@@ -2,7 +2,6 @@ package UI;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import javax.swing.AbstractButton;
@@ -18,7 +17,7 @@ public class NITButtonUI extends BasicButtonUI {
 		super.installUI(c);
 		AbstractButton button = (AbstractButton)c;
         button.setFocusable(true);
-        button.setMargin(new Insets(0, 0, 0, 0));
+        button.setMargin(NITTheme.basicInsets);
         button.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
         button.setRolloverEnabled(true);
 	}

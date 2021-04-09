@@ -1,7 +1,9 @@
 package UI;
 
+import javax.swing.JTextField;
 import javax.swing.UIDefaults;
 import javax.swing.plaf.basic.BasicLookAndFeel;
+import javax.swing.text.DefaultEditorKit;
 
 @SuppressWarnings("serial")
 public class NITLaF extends BasicLookAndFeel {
@@ -24,5 +26,35 @@ public class NITLaF extends BasicLookAndFeel {
         super.initClassDefaults(table);
         table.put("ButtonUI", NITButtonUI.class.getCanonicalName());
         table.put("LabelUI", NITLabelUI.class.getCanonicalName());
+        table.put("TextFieldUI", NITTextFieldUI.class.getCanonicalName());
     }
+	@Override
+	protected void initComponentDefaults(UIDefaults table) {
+		super.initComponentDefaults(table);
+		//Referenced from NapkinLookAndFeel.java @ SourceForge
+		Object fieldInputMap = new UIDefaults.LazyInputMap(new Object[]{
+				"ENTER", JTextField.notifyAction,
+				"BACK_SPACE", DefaultEditorKit.deletePrevCharAction,
+				"ctrl A", DefaultEditorKit.selectAllAction,
+                "ctrl C", DefaultEditorKit.copyAction,
+                "ctrl V", DefaultEditorKit.pasteAction,
+                "ctrl X", DefaultEditorKit.cutAction,
+                "COPY", DefaultEditorKit.copyAction,
+                "PASTE", DefaultEditorKit.pasteAction,
+                "CUT", DefaultEditorKit.cutAction,
+                "RIGHT", DefaultEditorKit.forwardAction,
+                "LEFT", DefaultEditorKit.backwardAction,
+                "KP_RIGHT", DefaultEditorKit.forwardAction,
+                "KP_LEFT", DefaultEditorKit.backwardAction,
+                "shift LEFT", DefaultEditorKit.selectionBackwardAction,
+                "shift KP_LEFT", DefaultEditorKit.selectionBackwardAction,
+                "shift RIGHT", DefaultEditorKit.selectionForwardAction,
+                "shift KP_RIGHT", DefaultEditorKit.selectionForwardAction,
+                "HOME", DefaultEditorKit.beginLineAction,
+                "END", DefaultEditorKit.endLineAction
+		}); Object[] actionDefaults = {
+				"TextField.focusInputMap", fieldInputMap
+		};
+		table.putDefaults(actionDefaults);
+	}
 }
