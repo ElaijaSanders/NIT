@@ -1,8 +1,11 @@
 package Testing;
 
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.*;
+
 import UI.NITLaF;
 
 public class Main {
@@ -31,8 +34,16 @@ public class Main {
     	JTextField textField1 = new JTextField("");
     	textField1.setPreferredSize(new Dimension(200, 40));
     	textField1.putClientProperty("placeholder", "Placeholder");
-    	addAll(tab1row2, textField1);
+    	JPasswordField textField2 = new JPasswordField("Password");
+    	JSpinner textField3 = new JSpinner(new SpinnerListModel(new Object[]{"El1", "El2"}));
+    	JComboBox<String> textField4 = new JComboBox<>(new String[]{"First", "Second", "Third"});
+    	textField4.setSize(150, 50);
+    	addAll(tab1row2, textField1, textField2, textField3, textField4);
     	tabs.addTab("Basic", tab1);
+    	tabs.addMouseListener(new MouseAdapter(){ @Override public void mousePressed(MouseEvent e) {
+				System.out.println(e.getX()+":"+e.getY());
+				super.mouseClicked(e);
+		} });
     	w.add(tabs);
     	w.setVisible(true);
     }

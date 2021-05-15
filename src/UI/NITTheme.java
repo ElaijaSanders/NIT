@@ -18,4 +18,7 @@ public class NITTheme {
 	public static Color textFieldBase = Color.decode("#F3F3F3");
 	public static Color textPlaceholder = new Color(128, 128, 128, 204);
 	public static Color textSelection = Color.decode("#75C2EB");
+	public static Color arrowColor = Color.DARK_GRAY;
+	public static Color arrowPressed = Color.DARK_GRAY.brighter().brighter();
+	public static Color arrowDisabled = Color.decode("#5C0600");
 }

@@ -27,6 +27,9 @@ public class NITLaF extends BasicLookAndFeel {
         table.put("ButtonUI", NITButtonUI.class.getCanonicalName());
         table.put("LabelUI", NITLabelUI.class.getCanonicalName());
         table.put("TextFieldUI", NITTextFieldUI.class.getCanonicalName());
+        table.put("PasswordFieldUI", NITPasswordFieldUI.class.getCanonicalName());
+        table.put("ComboBoxUI", NITDropdownUI.class.getCanonicalName());
+        table.put("SpinnerUI", NITSpinnerUI.class.getCanonicalName());
     }
 	@Override
 	protected void initComponentDefaults(UIDefaults table) {
@@ -53,7 +56,8 @@ public class NITLaF extends BasicLookAndFeel {
                 "HOME", DefaultEditorKit.beginLineAction,
                 "END", DefaultEditorKit.endLineAction
 		}); Object[] actionDefaults = {
-				"TextField.focusInputMap", fieldInputMap
+				"TextField.focusInputMap", fieldInputMap,
+				"PasswordField.focusInputMap", fieldInputMap
 		};
 		table.putDefaults(actionDefaults);
 	}

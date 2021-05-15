@@ -7,27 +7,24 @@ import java.awt.Insets;
 import java.awt.RenderingHints;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.geom.Area;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
-import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicTextFieldUI;
+import javax.swing.plaf.basic.BasicPasswordFieldUI;
 import javax.swing.text.JTextComponent;
 
-public class NITTextFieldUI extends BasicTextFieldUI {
+public class NITPasswordFieldUI extends BasicPasswordFieldUI {
 	@Override
 	public void installUI(JComponent c){
 		super.installUI(c);
-		JTextField textField = (JTextField)c;
+		JPasswordField textField = (JPasswordField)c;
 		textField.setFocusable(true);
 		textField.setMargin(NITTheme.basicInsets);
         textField.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
         textField.setSelectionColor(NITTheme.textSelection);
-        textField.putClientProperty("connectedRight", false);
+        textField.setEchoChar('\u2022');
 	}
 	@Override
 	protected void paintSafely(Graphics g) {
@@ -43,16 +40,10 @@ public class NITTextFieldUI extends BasicTextFieldUI {
 		Graphics2D d = (Graphics2D)g;
 		d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		d.setPaint(NITTheme.textFieldBase);
-		Area back = new Area(new RoundRectangle2D.Double(0, 0, c.getWidth(), c.getHeight(), 12, 12));
-		if((Boolean)c.getClientProperty("connectedRight")) back.add(new Area( new Rectangle2D.Double(c.getWidth()-12, 0, 12, c.getHeight()) ));
-		d.fill(back);
+		d.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), 12, 12);
 		if(c.hasFocus()) d.setPaint(NITTheme.selectedBorderColor);
 		else d.setPaint(NITTheme.borderColor);
-		Area front = new Area(new RoundRectangle2D.Double(0, 0, c.getWidth()-1, c.getHeight()-1, 10, 10));
-		if((Boolean)c.getClientProperty("connectedRight")) front.add(new Area(
-			new Rectangle2D.Double(c.getWidth()-10, 0, 10, c.getHeight()-1)
-		));
-		d.draw(front);
+		d.drawRoundRect(0, 0, c.getWidth()-1, c.getHeight()-1, 10, 10);
 	}
 	protected void paintPlaceholder(Graphics2D d, JTextComponent c) {
 		//Referenced from FlatTextFieldUI.java @ GitHub
@@ -71,5 +62,5 @@ public class NITTextFieldUI extends BasicTextFieldUI {
 			@Override public void focusGained(FocusEvent e){getComponent().repaint();}
 		});
 	}
-	public static ComponentUI createUI(JComponent c){ return new NITTextFieldUI(); }
+	public static ComponentUI createUI(JComponent c){ return new NITPasswordFieldUI(); }
 }
