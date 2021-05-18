@@ -5,8 +5,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.*;
+import javax.swing.plaf.metal.MetalButtonUI;
+import javax.swing.plaf.metal.MetalCheckBoxIcon;
+import javax.swing.plaf.metal.MetalRadioButtonUI;
 
+import UI.NITButtonUI;
+import UI.NITCheckboxUI;
 import UI.NITLaF;
+import UI.Icons.NITCheckboxIcon;
 
 public class Main {
 	static void addAll(JPanel p, JComponent... cs){ for(JComponent c : cs) p.add(c); }
@@ -39,6 +45,12 @@ public class Main {
     	JComboBox<String> textField4 = new JComboBox<>(new String[]{"First", "Second", "Third"});
     	textField4.setSize(150, 50);
     	addAll(tab1row2, textField1, textField2, textField3, textField4);
+    	JPanel tab1row3 = new JPanel(); tab1.add(tab1row3);
+    	JCheckBox checkBox1 = new JCheckBox("Checkbox");
+    	JRadioButton radioButton1 = new JRadioButton("Radio 1");
+    	JRadioButton radioButton2 = new JRadioButton("Radio 2");
+    	ButtonGroup radioButtonGroup = new ButtonGroup(); radioButtonGroup.add(radioButton1); radioButtonGroup.add(radioButton2);
+    	addAll(tab1row3, checkBox1, radioButton1, radioButton2);
     	tabs.addTab("Basic", tab1);
     	tabs.addMouseListener(new MouseAdapter(){ @Override public void mousePressed(MouseEvent e) {
 				System.out.println(e.getX()+":"+e.getY());

@@ -30,6 +30,8 @@ public class NITLaF extends BasicLookAndFeel {
         table.put("PasswordFieldUI", NITPasswordFieldUI.class.getCanonicalName());
         table.put("ComboBoxUI", NITDropdownUI.class.getCanonicalName());
         table.put("SpinnerUI", NITSpinnerUI.class.getCanonicalName());
+        table.put("CheckBoxUI", NITCheckboxUI.class.getCanonicalName());
+        table.put("RadioButtonUI", NITRadioButtonUI.class.getCanonicalName());
     }
 	@Override
 	protected void initComponentDefaults(UIDefaults table) {

@@ -21,4 +21,10 @@ public class NITTheme {
 	public static Color arrowColor = Color.DARK_GRAY;
 	public static Color arrowPressed = Color.DARK_GRAY.brighter().brighter();
 	public static Color arrowDisabled = Color.decode("#5C0600");
+	public static Color checkboxBase = Color.LIGHT_GRAY.brighter();
+	public static Color checkboxBasePressed = Color.decode("#B3B3B3");
+	public static Color checkboxCheck = Color.decode("#00076B");
+	public static Color radioButtonBase = Color.LIGHT_GRAY.brighter();
+	public static Color radioButtonBasePressed = Color.decode("#B3B3B3");
+	public static Color radioButtonSelection = Color.decode("#00076B");
 }
