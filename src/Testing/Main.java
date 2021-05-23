@@ -4,15 +4,35 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.*;
-import javax.swing.plaf.metal.MetalButtonUI;
-import javax.swing.plaf.metal.MetalCheckBoxIcon;
-import javax.swing.plaf.metal.MetalRadioButtonUI;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JSeparator;
+import javax.swing.JSlider;
+import javax.swing.JSpinner;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
+import javax.swing.JToggleButton;
+import javax.swing.SpinnerListModel;
+import javax.swing.UIManager;
+import javax.swing.plaf.SeparatorUI;
+import javax.swing.plaf.basic.BasicSeparatorUI;
+import javax.swing.plaf.metal.MetalSeparatorUI;
+import javax.swing.plaf.metal.MetalSliderUI;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import UI.NITButtonUI;
-import UI.NITCheckboxUI;
 import UI.NITLaF;
-import UI.Icons.NITCheckboxIcon;
+import UI.NITListUI;
+import UI.NITSliderUI;
 
 public class Main {
 	static void addAll(JPanel p, JComponent... cs){ for(JComponent c : cs) p.add(c); }
@@ -35,7 +55,10 @@ public class Main {
     	button4.getModel().setRollover(true);
     	JButton button5 = new JButton("Disabled");
     	button5.getModel().setEnabled(false);
-    	addAll(tab1row1, button1, button2, button3, button4, button5);
+    	JSeparator separator1 = new JSeparator(1);
+    	JToggleButton button6 = new JToggleButton("Toggle");
+    	button6.setUI(new NITButtonUI());
+    	addAll(tab1row1, button1, button2, button3, button4, button5, separator1, button6);
     	JPanel tab1row2 = new JPanel(); tab1.add(tab1row2);
     	JTextField textField1 = new JTextField("");
     	textField1.setPreferredSize(new Dimension(200, 40));
@@ -50,7 +73,15 @@ public class Main {
     	JRadioButton radioButton1 = new JRadioButton("Radio 1");
     	JRadioButton radioButton2 = new JRadioButton("Radio 2");
     	ButtonGroup radioButtonGroup = new ButtonGroup(); radioButtonGroup.add(radioButton1); radioButtonGroup.add(radioButton2);
-    	addAll(tab1row3, checkBox1, radioButton1, radioButton2);
+    	JSlider slider1 = new JSlider(0, 100, 15);
+    	slider1.setPaintTicks(true);
+    	slider1.setMajorTickSpacing(25);
+    	slider1.setMinorTickSpacing(5);
+    	addAll(tab1row3, checkBox1, radioButton1, radioButton2, slider1);
+    	JPanel tab1row4 = new JPanel(); tab1.add(tab1row4);
+    	JList<String> list1 = new JList<>(new String[]{"This", "is", "a list."});
+    	list1.setUI(new NITListUI());
+    	addAll(tab1row4, list1);
     	tabs.addTab("Basic", tab1);
     	tabs.addMouseListener(new MouseAdapter(){ @Override public void mousePressed(MouseEvent e) {
 				System.out.println(e.getX()+":"+e.getY());

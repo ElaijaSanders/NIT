@@ -33,7 +33,8 @@ public class NITButtonUI extends BasicButtonUI {
 		Graphics2D d = (Graphics2D)g;
 		d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		ButtonModel state = ((AbstractButton)c).getModel();
-		if(state.isRollover()) d.setPaint(NITTheme.buttonHover());
+		if(state.isSelected()) d.setPaint(NITTheme.toggleButtonSelected);
+		else if(state.isRollover()) d.setPaint(NITTheme.buttonHover());
 		else if(state.isPressed()) d.setPaint(NITTheme.buttonPressedNotOver(c.getHeight()));
 		else if(!state.isEnabled()) d.setPaint(NITTheme.buttonDisabled());
 		else d.setPaint(NITTheme.button(c.getHeight()));

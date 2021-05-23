@@ -32,6 +32,7 @@ public class NITLaF extends BasicLookAndFeel {
         table.put("SpinnerUI", NITSpinnerUI.class.getCanonicalName());
         table.put("CheckBoxUI", NITCheckboxUI.class.getCanonicalName());
         table.put("RadioButtonUI", NITRadioButtonUI.class.getCanonicalName());
+        table.put("SliderUI", NITSliderUI.class.getCanonicalName());
     }
 	@Override
 	protected void initComponentDefaults(UIDefaults table) {

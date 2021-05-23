@@ -27,4 +27,10 @@ public class NITTheme {
 	public static Color radioButtonBase = Color.LIGHT_GRAY.brighter();
 	public static Color radioButtonBasePressed = Color.decode("#B3B3B3");
 	public static Color radioButtonSelection = Color.decode("#00076B");
+	public static Color sliderThumbBase = Color.LIGHT_GRAY.brighter();
+	public static Color sliderThumbBasePressed = Color.decode("#C7C7C7");
+	public static Color sliderTrackBase = Color.decode("#F0F0F0");
+	public static Color toggleButtonSelected = Color.decode("#9999A4");
+	public static Color listBase = Color.decode("#F3F3F3");
+	public static Color listBaseSelected = Color.decode("#00076B");
 }
