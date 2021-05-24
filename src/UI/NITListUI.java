@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Area;
 import java.awt.geom.Rectangle2D.Double;
 import java.awt.geom.RoundRectangle2D;
@@ -24,6 +26,17 @@ public class NITListUI extends BasicListUI {
 		super.installUI(c);
 		JList<?> list = (JList<?>)c;
 		list.setOpaque(false);
+	}
+	@Override
+	protected void installListeners() {
+		super.installListeners();
+		this.list.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				if(e.getButton()==MouseEvent.BUTTON3) list.clearSelection();
+			}
+		});
 	}
 	@Override
 	protected void paintCell(Graphics g, int row, Rectangle rowBounds, ListCellRenderer<Object> renderer,

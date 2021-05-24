@@ -1,38 +1,20 @@
 package Testing;
 
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JRadioButton;
-import javax.swing.JSeparator;
-import javax.swing.JSlider;
-import javax.swing.JSpinner;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
-import javax.swing.JToggleButton;
-import javax.swing.SpinnerListModel;
-import javax.swing.UIManager;
+import javax.swing.*;
 import javax.swing.plaf.SeparatorUI;
 import javax.swing.plaf.basic.BasicSeparatorUI;
 import javax.swing.plaf.metal.MetalSeparatorUI;
 import javax.swing.plaf.metal.MetalSliderUI;
 import javax.swing.plaf.synth.SynthSeparatorUI;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.text.TableView;
 
-import UI.NITButtonUI;
-import UI.NITLaF;
-import UI.NITListUI;
-import UI.NITSliderUI;
+import UI.*;
 
 public class Main {
 	static void addAll(JPanel p, JComponent... cs){ for(JComponent c : cs) p.add(c); }
@@ -81,7 +63,15 @@ public class Main {
     	JPanel tab1row4 = new JPanel(); tab1.add(tab1row4);
     	JList<String> list1 = new JList<>(new String[]{"This", "is", "a list."});
     	list1.setUI(new NITListUI());
-    	addAll(tab1row4, list1);
+		JTable table1 = new JTable();
+		DefaultTableModel table1model = (DefaultTableModel)table1.getModel();
+		table1model.addColumn("Column 1");
+		table1model.addColumn("Column 2");
+		table1model.addRow(new String[]{"Row 1.1", "Row 1.2"});
+		table1model.addRow(new String[]{"Row 2.1", "Row 2.2"});
+		JPanel table1container = new JPanel(new BorderLayout()); table1container.add(table1.getTableHeader(), BorderLayout.NORTH); table1container.add(table1, BorderLayout.CENTER);
+		table1.setUI(new NITTableUI());
+    	addAll(tab1row4, list1, table1container);
     	tabs.addTab("Basic", tab1);
     	tabs.addMouseListener(new MouseAdapter(){ @Override public void mousePressed(MouseEvent e) {
 				System.out.println(e.getX()+":"+e.getY());
