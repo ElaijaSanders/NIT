@@ -69,7 +69,10 @@ public class Main {
 		table1model.addColumn("Column 2");
 		table1model.addRow(new String[]{"Row 1.1", "Row 1.2"});
 		table1model.addRow(new String[]{"Row 2.1", "Row 2.2"});
-		JPanel table1container = new JPanel(new BorderLayout()); table1container.add(table1.getTableHeader(), BorderLayout.NORTH); table1container.add(table1, BorderLayout.CENTER);
+		//JPanel table1container = new JPanel(new BorderLayout());
+		//table1container.add(table1.getTableHeader(), BorderLayout.NORTH); table1container.add(table1, BorderLayout.CENTER);
+		JScrollPane table1container = new JScrollPane(table1);
+		table1.setPreferredScrollableViewportSize(table1.getPreferredSize());
 		table1.setUI(new NITTableUI());
     	addAll(tab1row4, list1, table1container);
     	tabs.addTab("Basic", tab1);
