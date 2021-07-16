@@ -30,13 +30,10 @@ public class NITListUI extends BasicListUI {
 	@Override
 	protected void installListeners() {
 		super.installListeners();
-		this.list.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				super.mouseClicked(e);
-				if(e.getButton()==MouseEvent.BUTTON3) list.clearSelection();
-			}
-		});
+		this.list.addMouseListener(new MouseAdapter(){ @Override public void mouseClicked(MouseEvent e) {
+			super.mouseClicked(e);
+			if(e.getButton()==MouseEvent.BUTTON3) list.clearSelection();
+		} });
 	}
 	@Override
 	protected void paintCell(Graphics g, int row, Rectangle rowBounds, ListCellRenderer<Object> renderer,

@@ -36,4 +36,9 @@ public class NITTheme {
 	public static Color tableGrid = new Color(153, 153, 153);
 	public static Color tableBase = Color.decode("#F3F3F3");
 	public static Color tableBaseSelected = Color.decode("#00076B");
+	public static Color tableText = Color.BLACK;
+	public static Color tableTextSelected = Color.WHITE;
+	public static GradientPaint tableHeaderBase(int h){
+		return new GradientPaint(0, 0, Color.decode("#CCCCCC"), 0, h, Color.decode("#A1A1A1"));
+	}
 }
