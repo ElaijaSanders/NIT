@@ -23,6 +23,8 @@ public class NITSliderUI extends BasicSliderUI {
 		});
 	}
 	@Override
+	public void paintFocus(Graphics g){}
+	@Override
 	public void paintThumb(Graphics g) {
 		Graphics2D d = (Graphics2D)g;
 		d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

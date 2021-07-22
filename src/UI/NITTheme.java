@@ -32,7 +32,10 @@ public class NITTheme {
 	public static Color sliderTrackBase = Color.decode("#F0F0F0");
 	public static Color toggleButtonSelected = Color.decode("#9999A4");
 	public static Color listBase = Color.decode("#F3F3F3");
+	public static Color listBaseAlt = Color.decode("#E6E6E6");
 	public static Color listBaseSelected = Color.decode("#00076B");
+	public static Color listText = Color.BLACK;
+	public static Color listTextSelected = Color.WHITE;
 	public static Color tableGrid = new Color(153, 153, 153);
 	public static Color tableBase = Color.decode("#F3F3F3");
 	public static Color tableBaseSelected = Color.decode("#00076B");
@@ -40,5 +43,7 @@ public class NITTheme {
 	public static Color tableTextSelected = Color.WHITE;
 	public static GradientPaint tableHeaderBase(int h){
 		return new GradientPaint(0, 0, Color.decode("#CCCCCC"), 0, h, Color.decode("#A1A1A1"));
-	}
+	} public static Color progressBase = Color.decode("#F3F3F3");
+	public static Color progressDefinite = Color.decode("#00076B");
+	public static Color progressIndefinite = Color.decode("#000BA6");
 }

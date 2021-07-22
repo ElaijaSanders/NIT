@@ -3,22 +3,16 @@ package Testing;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 
 import javax.swing.*;
-import javax.swing.plaf.SeparatorUI;
-import javax.swing.plaf.basic.BasicSeparatorUI;
-import javax.swing.plaf.metal.MetalSeparatorUI;
-import javax.swing.plaf.metal.MetalSliderUI;
-import javax.swing.plaf.synth.SynthSeparatorUI;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-import javax.swing.text.TableView;
-
 import UI.*;
 
 public class Main {
 	static void addAll(JPanel p, JComponent... cs){ for(JComponent c : cs) p.add(c); }
 	public static void main(String[] args) throws Exception {
+		System.setProperty("sun.java2d.opengl", "true");
 		UIManager.setLookAndFeel(new NITLaF());
 		JFrame w = new JFrame();
         w.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,22 +53,35 @@ public class Main {
     	slider1.setPaintTicks(true);
     	slider1.setMajorTickSpacing(25);
     	slider1.setMinorTickSpacing(5);
+    	slider1.setPaintLabels(false);
     	addAll(tab1row3, checkBox1, radioButton1, radioButton2, slider1);
     	JPanel tab1row4 = new JPanel(); tab1.add(tab1row4);
     	JList<String> list1 = new JList<>(new String[]{"This", "is", "a list."});
-    	list1.setUI(new NITListUI());
 		JTable table1 = new JTable();
 		DefaultTableModel table1model = (DefaultTableModel)table1.getModel();
 		table1model.addColumn("Column 1");
-		table1model.addColumn("Column 2");
+		table1model.addColumn("Column 2 but long");
+		table1.getColumnModel().getColumn(1).setPreferredWidth(120);
 		table1model.addRow(new String[]{"Row 1.1", "Row 1.2"});
 		table1model.addRow(new String[]{"Row 2.1", "Row 2.2"});
-		//JPanel table1container = new JPanel(new BorderLayout());
-		//table1container.add(table1.getTableHeader(), BorderLayout.NORTH); table1container.add(table1, BorderLayout.CENTER);
+		table1.getTableHeader().setReorderingAllowed(false);
+		table1.getTableHeader().setResizingAllowed(false);
 		JScrollPane table1container = new JScrollPane(table1);
 		table1.setPreferredScrollableViewportSize(table1.getPreferredSize());
-		table1.setUI(new NITTableUI());
-    	addAll(tab1row4, list1, table1container);
+		table1container.setBorder(BorderFactory.createEmptyBorder());
+		JProgressBar progressBar1 = new JProgressBar(0, 100);
+		progressBar1.setValue(38);
+		progressBar1.setStringPainted(true);
+		progressBar1.addMouseWheelListener(new MouseAdapter(){ @Override public void mouseWheelMoved(MouseWheelEvent e){
+				super.mouseWheelMoved(e);
+				if(e.getWheelRotation()==-1) progressBar1.setValue(progressBar1.getValue()+1);
+				else progressBar1.setValue(progressBar1.getValue()-1);
+		} });
+		JProgressBar progressBar2 = new JProgressBar();
+		progressBar2.setIndeterminate(true);
+		progressBar1.setUI(new NITProgressbarUI());
+		progressBar2.setUI(new NITProgressbarUI());
+    	addAll(tab1row4, list1, table1container, progressBar1, progressBar2);
     	tabs.addTab("Basic", tab1);
     	tabs.addMouseListener(new MouseAdapter(){ @Override public void mousePressed(MouseEvent e) {
 				System.out.println(e.getX()+":"+e.getY());
